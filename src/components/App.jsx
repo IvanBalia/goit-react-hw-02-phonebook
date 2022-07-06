@@ -2,6 +2,8 @@ import { Component } from "react";
 import shortid from "shortid";
 //import shortid from "shortid";
 import { AddContactForm } from "./AddContactForm";
+import { ListOfContacts } from "./ListOfContacts";
+
 
 
 
@@ -29,7 +31,8 @@ export class App extends Component {
   render() {
    return  (
       <div>
-       <AddContactForm addContact={this.addContact }  onHandleChange={this.onHandleChange}/>
+       <AddContactForm addContact={this.addContact} onHandleChange={this.onHandleChange} />
+       <ListOfContacts list={ this.state.contacts} />
       </div>
     )
   }
