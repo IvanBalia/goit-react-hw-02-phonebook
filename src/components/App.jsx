@@ -11,7 +11,8 @@ export class App extends Component {
   
   state = {
     contacts: [],
-    name: ''
+    name: '',
+    tel:''
   };
 
   onHandleChange = (e) => {
@@ -20,10 +21,16 @@ export class App extends Component {
     })
   };
 
+  onHandleChangeTel = (e) => {
+    this.setState({
+      tel: e.currentTarget.value
+    })
+  };
+
   addContact = (e) => {
     e.preventDefault();
     this.setState(prevState => {
-      return { contacts: [...prevState.contacts,({ id: shortid.generate(), name: this.state.name })]}
+      return { contacts: [...prevState.contacts,({ id: shortid.generate(), name: this.state.name,tel:this.state.tel })]}
     });
     console.log(this.state.contacts);
   }
@@ -31,7 +38,7 @@ export class App extends Component {
   render() {
    return  (
       <div>
-       <AddContactForm addContact={this.addContact} onHandleChange={this.onHandleChange} />
+       <AddContactForm addContact={this.addContact} onHandleChange={this.onHandleChange} onHandleChangeTel={this.onHandleChangeTel} />
        <ListOfContacts list={ this.state.contacts} />
       </div>
     )

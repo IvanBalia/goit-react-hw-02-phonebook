@@ -3,7 +3,9 @@ export const ListOfContacts = ({ list }) => {
         <ul>
             {list.map(contact => (
                 <li key = {contact.id}>
-                    {contact.name}
+                    <span>{contact.name}</span>
+                    <span> </span>
+                    <span>{contact.tel}</span>
                 </li>
             ))}
         </ul>
