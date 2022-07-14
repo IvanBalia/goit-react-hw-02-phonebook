@@ -11,31 +11,9 @@ import shortid from "shortid";
 
 export class App extends Component {
   
-  state = {
+  state = { 
     contacts: [],
-    name: '',
-    tel: '',
     filter:''
-  };
-
-  onHandleChangeName = (e) => {
-    this.setState({
-      name: e.currentTarget.value
-    })
-  };
-
-  onHandleChangeTel = (e) => {
-    this.setState({
-      tel: e.currentTarget.value
-    })
-  };
-
-  addContact = (e) => {
-    e.preventDefault();
-    this.setState(prevState => {
-      return { contacts: [...prevState.contacts, ({ id: shortid.generate(), name: this.state.name, tel: this.state.tel })] }
-    });
-
   };
 
   
@@ -63,7 +41,7 @@ export class App extends Component {
   render() {
    return  (
       <div>
-       <ContactForm/>
+       <ContactForm contact={this.state.contacts } />
       </div>
     )
   }

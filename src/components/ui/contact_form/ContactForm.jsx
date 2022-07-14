@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 //import styled from 'styled-components';
 import { Formik,Form,ErrorMessage} from 'formik';
 import { Label } from '../Label';
@@ -9,25 +9,26 @@ import * as yup from 'yup';
 
 
 
-export class ContactForm extends Component {
-    validationSchema = yup.object().shape({
+export const ContactForm=({contact}) => {
+    const validationSchema = yup.object().shape({
         name: yup.string().required('This field is required'),
         tel: yup.number().required('This field is required').positive().integer(),
 
     });
 
-    onHandleSubmit = (values, {resetForm}) => {
+    const onHandleSubmit = (values, { resetForm }) => {
         console.log(values);
+        contact = [...values];
+        console.log(contact)
         resetForm();
-    }
+    };
   
- render() {
     return (
       <Formik
         initialValues={{ name: '', tel: '' }}
-        onSubmit={this.onHandleSubmit }
+        onSubmit={onHandleSubmit }
 
-        validationSchema={this.validationSchema}
+        validationSchema={validationSchema}
       >
             {( FormikProps ) => (
         
@@ -45,5 +46,3 @@ export class ContactForm extends Component {
       </Formik>
     );
   }
-
-}
