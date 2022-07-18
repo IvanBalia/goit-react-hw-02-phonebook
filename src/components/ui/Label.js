@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Label = styled.label`
-display: block;
+display: flex;
 margin-bottom: 10px;
+margin:10px;
 `

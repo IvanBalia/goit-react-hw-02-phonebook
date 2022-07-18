@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const FilterInput = styled.input`
-width: 100%;
+width: 50%;
+  margin:10px auto;
   padding: 10px 20px;
   color: ${({ theme }) => theme.colors.tertiary};
   background-color: ${({ theme }) => theme.colors.secondaryShade2};

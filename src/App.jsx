@@ -3,6 +3,7 @@ import { Component } from "react";
 import shortid from "shortid";
 import { Filter } from "components/ui/filter/Filter";
 import { ListOfContacts } from "components/ListOfContacts";
+import { Container } from "components/ui/Container";
 //import shortid from "shortid";
 //import { AddContactForm } from "./components/AddContactForm";
 //import { FilterInput } from "./components/FilterInput";
@@ -51,13 +52,13 @@ export class App extends Component {
   
   render() {
    return  (
-     <div>
+     <Container>
        <h1>Phonebook</h1>
        <ContactForm onHandleSubmit={this.addContact} />
        <h2>Contacts</h2>
        <Filter onHandleChange={this.filterContacts} value={this.state.filter} />
        <ListOfContacts list={this.getVisibleContacts()} />
-      </div>
+      </Container>
     )
   }
 };
