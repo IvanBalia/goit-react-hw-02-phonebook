@@ -1,6 +1,8 @@
 import { ContactForm } from "components/ui/contact_form/ContactForm";
 import { Component } from "react";
 import shortid from "shortid";
+import { Filter } from "components/ui/filter/Filter";
+import { ListOfContacts } from "components/ListOfContacts";
 //import shortid from "shortid";
 //import { AddContactForm } from "./components/AddContactForm";
 //import { FilterInput } from "./components/FilterInput";
@@ -15,6 +17,15 @@ export class App extends Component {
     contacts: [],
     filter:''
   };
+
+  addContact = (values, { resetForm }) => {
+    values.id = shortid.generate();
+    this.setState(prevState => {
+      return { contacts: [...prevState.contacts, values] }
+    });
+    console.log(this.state.contacts);
+    resetForm();
+  }
 
   
   filterContacts = (e) => {
@@ -40,8 +51,12 @@ export class App extends Component {
   
   render() {
    return  (
-      <div>
-       <ContactForm contact={this.state.contacts } />
+     <div>
+       <h1>Phonebook</h1>
+       <ContactForm onHandleSubmit={this.addContact} />
+       <h2>Contacts</h2>
+       <Filter onHandleChange={this.filterContacts} value={this.state.filter} />
+       <ListOfContacts list={this.getVisibleContacts()} />
       </div>
     )
   }

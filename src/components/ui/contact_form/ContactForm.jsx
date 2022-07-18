@@ -9,25 +9,19 @@ import * as yup from 'yup';
 
 
 
-export const ContactForm=({contact}) => {
+export const ContactForm=({onHandleSubmit}) => {
     const validationSchema = yup.object().shape({
         name: yup.string().required('This field is required'),
         tel: yup.number().required('This field is required').positive().integer(),
 
     });
 
-    const onHandleSubmit = (values, { resetForm }) => {
-        console.log(values);
-        contact = [...values];
-        console.log(contact)
-        resetForm();
-    };
+    
   
     return (
       <Formik
         initialValues={{ name: '', tel: '' }}
-        onSubmit={onHandleSubmit }
-
+        onSubmit={onHandleSubmit}
         validationSchema={validationSchema}
       >
             {( FormikProps ) => (
