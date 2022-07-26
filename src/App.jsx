@@ -1,13 +1,10 @@
-import { ContactForm } from "components/ui/contact_form/ContactForm";
+import { ContactForm } from "components/contact_form/ContactForm";
 import { Component } from "react";
 import shortid from "shortid";
-import { Filter } from "components/ui/filter/Filter";
-import { ListOfContacts } from "components/ListOfContacts";
+import { Filter } from "components/filter/Filter";
+import { ListOfContacts } from "components/listOfContacts/ListOfContacts";
 import { Container } from "components/ui/Container";
-//import shortid from "shortid";
-//import { AddContactForm } from "./components/AddContactForm";
-//import { FilterInput } from "./components/FilterInput";
-//import { ListOfContacts } from "./components/ListOfContacts";
+
 
 
 
@@ -26,7 +23,7 @@ export class App extends Component {
     });
     console.log(this.state.contacts);
     resetForm();
-  }
+  };
 
   
   filterContacts = (e) => {
@@ -47,17 +44,28 @@ export class App extends Component {
     {return this.state.contacts}  
 
   };
-  
+
+  deleteContact = (deleteId) => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== deleteId),
+    }));
+    console.log(this.state.contacts);
+  };
     
   
   render() {
    return  (
      <Container>
        <h1>Phonebook</h1>
-       <ContactForm onHandleSubmit={this.addContact} />
+       <ContactForm
+         onHandleSubmit={this.addContact} />
        <h2>Contacts</h2>
-       <Filter onHandleChange={this.filterContacts} value={this.state.filter} />
-       <ListOfContacts list={this.getVisibleContacts()} />
+       <Filter
+         onHandleChange={this.filterContacts}
+         value={this.state.filter} />
+       <ListOfContacts
+         list={this.getVisibleContacts()}
+         onDeleteContact={this.deleteContact} />
       </Container>
     )
   }

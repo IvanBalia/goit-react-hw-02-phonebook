@@ -1,7 +1,7 @@
 import React from "react";
 import { FilterInput } from "./FilterInput";
 import { Formik} from 'formik';
-import { Label } from '../Label';
+import { Label } from '../ui/Label';
 import * as yup from 'yup'
 
 export const Filter = ({ onHandleChange }) => {

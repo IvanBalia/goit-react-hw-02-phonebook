@@ -1,9 +1,10 @@
 import React from 'react';
 //import styled from 'styled-components';
 import { Formik,Form,ErrorMessage} from 'formik';
-import { Label } from '../Label';
+import { Label } from '../ui/Label';
 import { FormikInput } from '../formikInput/FormikInput';
-import { Button } from '../button/Button';
+import { Button } from './Button';
+import { Message } from '../erorrMessage/Message';
 import * as yup from 'yup';
 
 
@@ -28,11 +29,18 @@ export const ContactForm=({onHandleSubmit}) => {
         
           <Form>
             <Label>
-                        <FormikInput name="name" type="input" />
-                        <ErrorMessage name="name" />
+              <FormikInput name="name" type="input" />
+              
+              <ErrorMessage
+                name="name"
+                render={msg => <Message>{msg}</Message>} />
+            
             </Label>
             <Label>
-           <FormikInput name="tel" type="input" />
+              <FormikInput name="tel" type="input" />
+              <ErrorMessage
+                name="tel"
+                render={msg => <Message>{msg}</Message>} />
             </Label>
             <Button type="submit" >Add Contacts</Button>
           </Form>
