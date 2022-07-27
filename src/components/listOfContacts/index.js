@@ -1,3 +1,1 @@
-export * from './ContactItem';
-export * from './DeleteButton';
-export * from './List';
+export * from './ListOfContacts';
